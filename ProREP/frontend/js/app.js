@@ -173,6 +173,22 @@ function renderizarGestores(lista) {
 }
 
 
+//para datos desde el backend de mi api 
+// cargarDatosDesdeApi();
+// async function cargarDatosDesdeApi() {
+//     const url = "http://localhost/proyecto/backend/api/v1/gestores.php"; // VERIFICAR LA URL
+//     try {
+//         const response = await fetch(url);
+//         const data = await response.json();
+//         console.log("Datos desde backend:", data);
+//         renderizarGestores(data);
+//     } catch (error) {
+//         console.error("Error cargando datos:", error);
+//         document.getElementById("mensaje").textContent = "Error cargando datos.";
+//     }
+// }
+
+
 // cargarGestores();
 
 // function cargarGestores() {
