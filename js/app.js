@@ -1,8 +1,8 @@
 // Datos simulados de gestores (empresas)
-const gestores = [
+ const gestores = [
     {
         "id": 1,
-        "nombre": "Reciclajes Santiago Ltda.",
+        "nombre": "Reciclajes Santiago Ltda.515616515",
         "empresa_tipo": {
             "id": 1,
             "nombre": "Reciclador de Base",
@@ -84,11 +84,30 @@ const gestores = [
             },
             "activo": true
         }
+    },
+    {
+        "id": 5,
+        "nombre": "Si esta Tarjeta esta activa, es porque hay un error en la carga de datos desde el backend",
+        "empresa_tipo": {
+            "id": 5,
+            "nombre": "ERROR CONEXION BACKEND",
+            "codigo": "G",
+            "icono": {
+                "FontAwesome": "fa-globe-americas"
+            },
+            "color": {
+                "Tailwind": "bg-purple-100",
+                "css": "rgb(243, 232, 255)"
+            },
+            "activo": true
+        }
     }
-];
+
+
+]; 
 
 // Datos simulados de tipo de empresa y sus cararterísticas
-const empresaTipo = [
+/* const empresaTipo = [
     {
         "id": 1,
         "nombre": "Reciclador de Base",
@@ -154,7 +173,7 @@ const empresaTipo = [
         },
         "activo": true
     }
-];
+]; */
 
 //para datos gestors desde app.js
 renderizarGestores(gestores);
@@ -173,20 +192,40 @@ function renderizarGestores(lista) {
 }
 
 
-//para datos desde el backend de mi api 
-// cargarDatosDesdeApi();
-// async function cargarDatosDesdeApi() {
-//     const url = "http://localhost/proyecto/backend/api/v1/gestores.php"; // VERIFICAR LA URL
-//     try {
-//         const response = await fetch(url);
-//         const data = await response.json();
-//         console.log("Datos desde backend:", data);
-//         renderizarGestores(data);
-//     } catch (error) {
-//         console.error("Error cargando datos:", error);
-//         document.getElementById("mensaje").textContent = "Error cargando datos.";
-//     }
-// }
+/* para datos desde el backend de mi api  */
+cargarDatosDesdeApi();
+async function cargarDatosDesdeApi() {
+    const url = "http://localhost/ipss/api/v1/gestores/";
+    const token = "ipss.2025.T3";
+
+    try {
+        console.log("Cargando datos desde backend...");
+        const response = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("Datos desde backend:", data);
+        renderizarGestores(data.data);
+        //renderizarGestores(data);
+        //const nombreObjeto2 = data.data[1].nombre;
+        const nombreObjeto2 = data.data[1].empresa_tipo[1];
+        console.log(nombreObjeto2);
+
+    } catch (error) {
+        console.error("Error cargando datos:", error);
+        const mensajeElem = document.getElementById("mensaje");
+        if (mensajeElem) mensajeElem.textContent = "Error cargando datos.";
+    }
+}
+
+
 
 
 // cargarGestores();
