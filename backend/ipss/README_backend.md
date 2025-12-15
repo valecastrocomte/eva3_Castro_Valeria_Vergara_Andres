@@ -370,6 +370,6 @@ En caso que xamp msql se rompa:
     copiarlas y pegarlas en data
     finalmente, crear denuevo el usuario
 
-    CREATE USER 'creatuwebs'@'localhost' IDENTIFIED BY 'creatuwebs_b4ck3nd';
-GRANT ALL PRIVILEGES ON `creatuwebs`. * TO 'creatuwebs'@'localhost';
+    CREATE USER 'prored'@'localhost' IDENTIFIED BY 'prored_b4ck3nd';
+GRANT ALL PRIVILEGES ON `prored`. * TO 'prored'@'localhost';
 FLUSH PRIVILEGES;
